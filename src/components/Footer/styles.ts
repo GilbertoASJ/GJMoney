@@ -11,6 +11,10 @@ export const Container = styled.div`
 		a {
 			color: var(--blue-light);
 			text-decoration: none;
+
+			&:hover {
+				color: darkblue;
+			}
 		}
 	}
 `
