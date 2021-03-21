@@ -1,7 +1,11 @@
 import logoImg from '../../assets/logo.png'
 import { Container, Content } from './styles'
 
-export function Header() {
+interface HeaderProps {
+	onOpenNewTransacionModal: () => void;
+}
+
+export function Header({ onOpenNewTransacionModal }: HeaderProps) {
 	return (
 		<Container>
 			<Content>
@@ -10,7 +14,7 @@ export function Header() {
 					<h1 className="logoTxt">GJMoney</h1>
 				</div>
 				<div className="divButton">
-					<button type="button">Nova transação</button>
+					<button type="button" onClick={onOpenNewTransacionModal}>Nova transação</button>
 				</div>
 			</Content>
 		</Container>
