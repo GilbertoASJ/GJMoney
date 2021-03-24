@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { darken } from 'polished'
+import { darken, transparentize } from 'polished'
 
 export const Container = styled.form`
 	h2 {
@@ -57,6 +57,12 @@ export const TransactionTypeContainer = styled.div`
 // Criando uma interface para a propriedade criada no botão em index.tsx
 interface RadioBoxProps {
 	isActive: boolean;
+	activeColor: 'green' | 'red';
+}
+
+const colors = {
+	red: '#e52e4d',
+	green: '#33cc95'
 }
 
 // E para utilizar essa interface dentro de um elemento styled components, basta utilizar o 'generic', e para utilizar basta colocar a interface dentro de <>:
@@ -66,7 +72,10 @@ export const RadioBox = styled.button<RadioBoxProps>`
 	border-radius: 0.25rem;
 
 	/* Aqui fazemos uma interpolação, passando uma função que por sua vez retorna a cor do background baseado em uma condição */
-	background: ${(props) => props.isActive ? '#ccc' : 'transparent'};
+	background: ${(props) => props.isActive 
+		? transparentize(0.9, colors[props.activeColor])
+		: 'transparent'
+	};
 
 	display: flex;
 	align-items: center;
@@ -75,6 +84,7 @@ export const RadioBox = styled.button<RadioBoxProps>`
 	transition: border-color 0.2s;
 
 	&:hover {
+		/* Darken, importado do polished, serve para escurecer determinada cor */
 		border-color: ${darken(0.1, '#d7d7d7')};
 	}
 
