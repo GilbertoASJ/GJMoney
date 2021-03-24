@@ -3,6 +3,8 @@ import Modal from 'react-modal'
 import closeImg from '../../assets/close.svg'
 import incomeImage from '../../assets/income.svg'
 import outcomeImage from '../../assets/outcome.svg'
+
+import { api } from '../../services/api'
 import { Container, TransactionTypeContainer, RadioBox } from './styles'
 import { useState, FormEvent } from 'react'
 
@@ -11,6 +13,7 @@ interface NewTransactionModalProps {
 	onRequestClose: () => void;
 }
 
+// Função principal NewTransactionModal
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
 	const [title, setTitle] = useState('')
 	const [value, setValue] = useState(0)
@@ -21,6 +24,16 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
 	function handleCreateNewTransaction(event: FormEvent) {
 		// Evitando o comportamento padrão do evento FormEvent do HTML:
 		event.preventDefault()
+
+		// Armazenando os dados obtidos no formulário em um objeto
+		const data = {
+			title,
+			value,
+			category, 
+			type
+		}
+
+		api.post('/transactions', data)
 
 	}
 
