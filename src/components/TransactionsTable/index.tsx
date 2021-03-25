@@ -1,11 +1,27 @@
-import { useEffect } from 'react'
+// Importações
+import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
 import { Container } from './styles'
 
+// Criando interface typescript para transaction
+interface Transaction {
+	id: number,
+	title: string,
+	amount: number,
+	type: string,
+	category: string,
+	createdAt: string
+}
+
 export function TransactionsTable() {
+	// useState armazena um array de Transaction
+	const [transactions, setTransactions] = useState<Transaction[]>([])
+
+	// Recuperando as transactions
 	useEffect(() => {
 		api.get('transactions')
-		.then(response => console.log(response.data))
+		/* Salvando transações no estado */
+		.then(response => setTransactions(response.data.transactions))
 
 	}, [])
 
@@ -22,19 +38,18 @@ export function TransactionsTable() {
 				</thead>
 
 				<tbody>
-					<tr>
-						<td>Website</td>
-						<td className="deposit">R$700,00</td>
-						<td>Desenvolvimento</td>
-						<td>10/02/2021</td>
-					</tr>
-					<tr>
-						<td>Peças computador</td>
-						<td className="withdraw">- R$200,00</td>
-						<td>Hardware</td>
-						<td>01/03/2021</td>
-					</tr>
-					
+					{	// Toda vez que se utiliza o map, o primeiro elemento após ele precisa de uma key(chave)
+						transactions.map(transaction => {
+							return (						
+								<tr key={transaction.id}>
+									<td>{transaction.title}</td>
+									<td className={transaction.type}>{transaction.amount}</td>
+									<td>{transaction.category}</td>
+									<td>{transaction.createdAt}</td>
+								</tr>
+							)
+						})
+					}
 				</tbody>
 			</table>
 		</Container>
