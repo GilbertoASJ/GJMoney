@@ -1,7 +1,9 @@
 // Importações
+import React, { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
 import { Container } from './styles'
+import { TransactionsContext } from '../../TransactionsContext'
 
 // Criando interface typescript para transaction
 interface Transaction {
@@ -14,6 +16,9 @@ interface Transaction {
 }
 
 export function TransactionsTable() {
+
+	const data = useContext(TransactionsContext)
+
 	// useState armazena um array de Transaction
 	const [transactions, setTransactions] = useState<Transaction[]>([])
 
@@ -54,6 +59,7 @@ export function TransactionsTable() {
 									<td>{transaction.category}</td>
 
 									<td>
+										{/* Formatando data para formato brasileiro */}
 										{new Intl.DateTimeFormat('pt-BR').format(
 											new Date(transaction.createdAt)
 										)}
