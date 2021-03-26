@@ -1,34 +1,11 @@
 // Importações
 import React, { useContext } from 'react'
-import { useEffect, useState } from 'react'
-import { api } from '../../services/api'
 import { Container } from './styles'
 import { TransactionsContext } from '../../TransactionsContext'
 
-// Criando interface typescript para transaction
-interface Transaction {
-	id: number,
-	title: string,
-	amount: number,
-	type: string,
-	category: string,
-	createdAt: string
-}
-
 export function TransactionsTable() {
 
-	const data = useContext(TransactionsContext)
-
-	// useState armazena um array de Transaction
-	const [transactions, setTransactions] = useState<Transaction[]>([])
-
-	// Recuperando as transactions
-	useEffect(() => {
-		api.get('transactions')
-		/* Salvando transações no estado */
-		.then(response => setTransactions(response.data.transactions))
-
-	}, [])
+	const transactions = useContext(TransactionsContext)
 
 	return (
 		<Container>
