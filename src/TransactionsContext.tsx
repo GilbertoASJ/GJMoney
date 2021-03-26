@@ -16,7 +16,18 @@ interface TransactionsProviderProps {
 	children: ReactNode;
 }
 
-export const TransactionsContext = createContext<Transaction[]>([])
+interface TransactionsContextData {
+	transactions: Transaction[];
+	createTransaction: (transaction: TransactionInput) => void; 
+}
+
+// Recupera os valores da interface Transaction omitindo alguns parâmetros
+type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>
+
+export const TransactionsContext = createContext<TransactionsContextData>(
+	// Fazendo com que o typescript entenda que o contexto está corretamente tipado
+	{} as TransactionsContextData
+);
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
 	// useState armazena um array de Transaction
@@ -30,8 +41,13 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
 	}, []);
 
+	function createTransaction(transaction: TransactionInput) {
+		api.post('/transactions', transaction)
+
+	}
+
 	return (
-		<TransactionsContext.Provider value={transactions}>	
+		<TransactionsContext.Provider value={{ transactions, createTransaction }}>	
 			{ children }
 		</TransactionsContext.Provider>
 	)
