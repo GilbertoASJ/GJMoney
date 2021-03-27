@@ -26,16 +26,22 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
 	const [type, setType] = useState('deposit')
 
 	// Função a ser executada quando o formulário do modal 'receber um submit'.
-	function handleCreateNewTransaction(event: FormEvent) {
+	async function handleCreateNewTransaction(event: FormEvent) {
 		// Evitando o comportamento padrão do evento FormEvent do HTML:
 		event.preventDefault()
 
-		createTransaction({
+		await createTransaction({
 			title,
 			amount,
 			category,
 			type,
 		})
+
+		setTitle('');
+		setAmount(0);
+		setCategory('');
+		setType('deposit');
+		onRequestClose();
 	}
 
 	// Retorno do HTML 
