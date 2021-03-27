@@ -1,14 +1,13 @@
 // Importações
-import React, { useContext } from 'react'
 import OutcomeImg from '../../assets/outcome.svg'
 import IncomeImg from '../../assets/income.svg'
 import TotalImg from '../../assets/total.svg'
-import { TransactionsContext } from '../../TransactionsContext'
+import { useTransactions } from '../../hooks/useTransactions'
 
 import { Container } from './styles'
 
 export function Summary() {
-	const { transactions } = useContext(TransactionsContext)
+	const { transactions } = useTransactions()
 
 	// Lógica que irá realizar os cálculos dos depositos saídas e total
 	const summary = transactions.reduce((acc, transaction) => {

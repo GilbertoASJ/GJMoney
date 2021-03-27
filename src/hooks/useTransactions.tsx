@@ -1,6 +1,6 @@
 // Importações
-import { createContext, useState, useEffect, ReactNode } from 'react'
-import { api } from './services/api'
+import { createContext, useState, useEffect, useContext, ReactNode } from 'react'
+import { api } from '../services/api'
 
 // Criando interface typescript para transaction
 interface Transaction {
@@ -24,7 +24,7 @@ interface TransactionsContextData {
 // Recupera os valores da interface Transaction omitindo alguns parâmetros
 type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>
 
-export const TransactionsContext = createContext<TransactionsContextData>(
+const TransactionsContext = createContext<TransactionsContextData>(
 	// Fazendo com que o typescript entenda que o contexto está corretamente tipado
 	{} as TransactionsContextData
 );
@@ -60,4 +60,10 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 			{ children }
 		</TransactionsContext.Provider>
 	)
+}
+
+export function useTransactions() {
+	const context = useContext(TransactionsContext)
+
+	return context
 }

@@ -6,8 +6,8 @@ import outcomeImage from '../../assets/outcome.svg'
 
 import { api } from '../../services/api'
 import { Container, TransactionTypeContainer, RadioBox } from './styles'
-import { useState, FormEvent, useContext } from 'react'
-import { TransactionsContext } from '../../TransactionsContext'
+import { useState, FormEvent } from 'react'
+import { useTransactions } from '../../hooks/useTransactions'
 
 interface NewTransactionModalProps {
 	isOpen: boolean;
@@ -18,7 +18,7 @@ interface NewTransactionModalProps {
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
 
 	// Chamada da função de dentro do Contexto
-	const { createTransaction } = useContext(TransactionsContext)
+	const { createTransaction } = useTransactions()
 
 	const [title, setTitle] = useState('')
 	const [amount, setAmount] = useState(0)
