@@ -11,7 +11,7 @@ export function Summary() {
 
 	// Lógica que irá realizar os cálculos dos depositos saídas e total
 	const summary = transactions.reduce((acc, transaction) => {
-		if(transaction.type == 'deposit') {
+		if(transaction.type === 'deposit') {
 			acc.deposits += transaction.amount
 			acc.total += transaction.amount
 
