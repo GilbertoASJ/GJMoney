@@ -18,7 +18,7 @@ interface TransactionsProviderProps {
 
 interface TransactionsContextData {
 	transactions: Transaction[];
-	createTransaction: (transaction: TransactionInput) => void; 
+	createTransaction: (transaction: TransactionInput) => Promise<void>; 
 }
 
 // Recupera os valores da interface Transaction omitindo alguns parâmetros
@@ -41,9 +41,18 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
 	}, []);
 
-	function createTransaction(transaction: TransactionInput) {
-		api.post('/transactions', transaction)
+	async function createTransaction(transactionInput: TransactionInput) {
+		// Atribuindo a resposta quando se faz uma nova transação a uma variável
+		const response = await api.post('/transactions', {
+			...transactionInput,
+			createdAt: new Date(),
+		})
+		const { transaction } = response.data
 
+		setTransactions([
+			...transactions,
+			transaction,
+		])
 	}
 
 	return (
