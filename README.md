@@ -6,13 +6,11 @@
 
 ### 📚 Sobre
 
-Orange finances, é a minha versão para o aplicativo dev.finances, desenvolvido durante a Maratona Discover, realizada pela Rocketseat.
-O aplicativo consiste em gerenciar suas finanças de forma rápida e simples, com um sistema de cálculo das transações realizadas pelo usuário.
+GJMoney é um aplicativo de gerenciamento de finanças construido no segundo módulo de ReactJs do Ignite - Rocketseat. O aplicativo consiste em gerenciar suas finanças de forma rápida e simples, com um sistema de cálculo das transações realizadas pelo usuário.
 
 ### 🎨 Detalhe
 
-Neste aplicativo, foi utilizado o localStorage, uma funcionalidade do JavaScript para o armazenamento de dados localmente no navegador do usuário.
-Há responsividade.
+Nesse aplicativo foi utilizado diversos conceitos do React e ferramentas como Styled Components, MirageJS, Context API, hooks, Axios e muito mais.
 
 <hr>
 
@@ -27,24 +25,16 @@ Depois de fazer o 'merge' de seu pull request, você pode excluir seu branch.
 
 ### 💻 Tecnologias utilizadas
 
-Neste Aplicativo de Finanças foram utilizadas as seguintes tecnologias
-
 - [HTML](https://www.w3schools.com/html/)
 - [CSS](https://www.w3schools.com/css/)
 - [JavaScript](https://www.w3schools.com/js/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://pt-br.reactjs.org/)
 
 ### ✈️ Como acessar o Aplicativo 
 
-Hospedado na Vercel
-
-https://orange-finances-gsj.vercel.app/
-
-Ou então 
-
-```
-Faça o download do repositório e execute index.html
-```
+...
 
 ### 📃 Licença
 
-Este projeto está sobre a licença <a href="https://github.com/GilbertoASJ/Orange-finances/blob/main/LICENSE">MIT</a>
+Este projeto está sobre a licença <a href="https://github.com/GilbertoASJ/GJMoney/blob/main/LICENSE">MIT</a>
