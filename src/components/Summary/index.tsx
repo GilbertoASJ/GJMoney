@@ -26,7 +26,7 @@ export function Summary() {
 		deposits: 0,
 		withdraws: 0,
 		total: 0,
-	})
+	}) 
 
 	return (
 		<Container>
@@ -36,10 +36,10 @@ export function Summary() {
 					<img src={IncomeImg} alt="Entradas" />
 				</header>
 				<strong>
-					{new Intl.NumberFormat('pt-BR', {
-						style: 'currency',
-						currency: 'BRL'
-					}). format(summary.deposits)}
+					{new Intl.NumberFormat('pt-BR', { 
+	  					style: 'currency',
+						currency: 'BRL' 
+					}).format(summary.deposits)}
 					
 				</strong>
 			</div>
@@ -53,7 +53,7 @@ export function Summary() {
 					- {new Intl.NumberFormat('pt-BR', {
 						style: 'currency',
 						currency: 'BRL'
-					}). format(summary.withdraws)}
+					}).format(summary.withdraws)}
 				</strong>
 			</div>
 
@@ -66,7 +66,7 @@ export function Summary() {
 					{new Intl.NumberFormat('pt-BR', {
 						style: 'currency',
 						currency: 'BRL'
-					}). format(summary.total)}
+					}).format(summary.total)}
 				</strong>
 			</div>
 		</Container>
