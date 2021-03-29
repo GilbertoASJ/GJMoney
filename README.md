@@ -33,9 +33,21 @@ Depois de fazer o 'merge' de seu pull request, você pode excluir seu branch.
 
 ### ✈️ Como acessar o Aplicativo 
 
-Hospedado no Netlify
+```
+# Clone o repositório
+$ git clone https://github.com/GilbertoASJ/GJMoney.git
 
-https://gjmoney-gsj.netlify.app/
+# Acesse
+$ cd gjmoney
+
+# Instale as dependências
+$ yarn
+
+# Rode o projeto
+$ yarn start
+
+# O server será inciado em <http://localhost:3000>
+```
 
 ### 📃 Licença
 
