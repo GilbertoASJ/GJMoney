@@ -33,7 +33,9 @@ Depois de fazer o 'merge' de seu pull request, você pode excluir seu branch.
 
 ### ✈️ Como acessar o Aplicativo 
 
-...
+Hospedado no Netlify
+
+https://gjmoney-gsj.netlify.app/
 
 ### 📃 Licença
 
